@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gccoffeeshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'gccoffeeshop.dbo.items' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="items">
+    <Key>
+      <PropertyRef Name="itemid" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="description" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="itemid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="quantity" Type="smallint" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="gccoffeeshopModelStoreContainer">
+    <EntitySet Name="items" EntityType="Self.items" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [items].[itemid] AS [itemid], 
+    [items].[name] AS [name], 
+    [items].[description] AS [description], 
+    [items].[quantity] AS [quantity], 
+    [items].[price] AS [price]
+    FROM [dbo].[items] AS [items]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<br />
+<form action="/Home/SearchItemByName" method="get">
+    <label class="form-control">Item Name</label>
+    <input type="text" name="name" class="form-control"/>
+<input type="submit" value="Search"/>
+</form>
+<a href="/Home/NewItem">Add</a>
+<table border="1" class="table">
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td></td>
+        <td></td>
+    </tr>
+    @foreach (var item in ViewBag.Items)
+    {
+        <tr>
+            <td>@item.name</td>
+            <td>@item.description</td>
+            <td> @item.quantity </td>
+            <td> @item.price</td>
+            <td> <a href="Home/DeleteItem?itemid=@item.itemid" onclick="return confirm('Are you sure?')">Delete</a></td>
+            <td> <a href="Home/ItemDetails?itemid=@item.itemid">Edit</a></td>
+        </tr>
+    }
+</table>
